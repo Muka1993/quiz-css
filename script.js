@@ -7,7 +7,7 @@ import { render } from "https://cdn.skypack.dev/react-dom";
 
 import gsap from "https://cdn.skypack.dev/gsap";
 
-// Questões
+// INICIO DAS QUESTÕES
 
 const questions = [
 {
@@ -143,7 +143,9 @@ const questions = [
   
 ];
 
+// FIM DAS QUESTÕES
 
+// FUNÇÕES
 
 function useCounter(initialState) {
   const [value, setValue] = useState(initialState);
@@ -194,19 +196,19 @@ function Question({
 
   }, [data]);
 
-  return /*#__PURE__*/(
-    React.createElement("div", { className: "question", ref: questionRef }, /*#__PURE__*/
-    React.createElement("div", { className: "question-inner" }, /*#__PURE__*/
-    React.createElement("h2", { className: "question-text" }, data.text), /*#__PURE__*/
+  return(
+    React.createElement("div", { className: "question", ref: questionRef },
+    React.createElement("div", { className: "question-inner" },
+    React.createElement("h2", { className: "question-text" }, data.text),
     React.createElement("ul", { className: "question-answers" },
     data.answers.map((text, index) => {
       const value = `q${data.id}-${index}`;
-      return /*#__PURE__*/(
+      return(
         React.createElement("li", {
           className:
           index === data.correct && showAnswer ? "is-true" : "",
 
-          "data-selected": markSelection === index ? true : null }, /*#__PURE__*/
+          "data-selected": markSelection === index ? true : null },
 
         React.createElement("input", {
           type: "radio",
@@ -215,7 +217,7 @@ function Question({
           id: value,
           onChange: e => setAnswer(e.target.value),
           checked:
-          !showAnswer ? answer === value : markSelection === index }), /*#__PURE__*/
+          !showAnswer ? answer === value : markSelection === index }),
 
 
         React.createElement("label", { className: "question-answer", htmlFor: value },
@@ -226,24 +228,23 @@ function Question({
     }))),
 
 
-    hasButton && /*#__PURE__*/
+    hasButton && 
     React.createElement("button", {
       className: "question-button",
       onClick: () => onQuestionButtonClick(parseValue(answer), data) },
 
     buttonText)));
 
-
-
-
 }
 
+// FUNÇÃO QUE MOSTRA OS ACERTOS
+
 function Results({ wrong, correct, empty }) {
-  return /*#__PURE__*/(
-    React.createElement("div", { className: "result" }, /*#__PURE__*/
-    React.createElement("div", { className: "result-item is-correct" }, /*#__PURE__*/
-    React.createElement("span", { className: "result-count" }, correct), /*#__PURE__*/
-    React.createElement("span", { className: "result-text" }, /*#__PURE__*/
+  return(
+    React.createElement("div", { className: "result" },
+    React.createElement("div", { className: "result-item is-correct" },
+    React.createElement("span", { className: "result-count" }, correct),
+    React.createElement("span", { className: "result-text" },
     React.createElement("svg", {
       width: "16",
       height: "16",
@@ -253,17 +254,17 @@ function Results({ wrong, correct, empty }) {
       strokeLinejoin: "round",
       strokeWidth: "2",
       className: "css-i6dzq1",
-      viewBox: "0 0 24 24" }, /*#__PURE__*/
+      viewBox: "0 0 24 24" },
 
-    React.createElement("path", { d: "M22 11.08V12a10 10 0 11-5.93-9.14" }), /*#__PURE__*/
-    React.createElement("path", { d: "M22 4L12 14.01 9 11.01" })), "CORRETO")), /*#__PURE__*/
-
-
+    React.createElement("path", { d: "M22 11.08V12a10 10 0 11-5.93-9.14" }),
+    React.createElement("path", { d: "M22 4L12 14.01 9 11.01" })), "CORRETO")),
 
 
-    React.createElement("div", { className: "result-item is-wrong" }, /*#__PURE__*/
-    React.createElement("span", { className: "result-count" }, wrong), /*#__PURE__*/
-    React.createElement("span", { className: "result-text" }, /*#__PURE__*/
+    // FUNÇÃO QUE MOSTRA OS ERROS
+
+    React.createElement("div", { className: "result-item is-wrong" },
+    React.createElement("span", { className: "result-count" }, wrong),
+    React.createElement("span", { className: "result-text" },
     React.createElement("svg", {
       width: "16",
       height: "16",
@@ -273,18 +274,19 @@ function Results({ wrong, correct, empty }) {
       strokeLinejoin: "round",
       strokeWidth: "2",
       className: "css-i6dzq1",
-      viewBox: "0 0 24 24" }, /*#__PURE__*/
+      viewBox: "0 0 24 24" },
 
-    React.createElement("circle", { cx: "12", cy: "12", r: "10" }), /*#__PURE__*/
-    React.createElement("path", { d: "M15 9L9 15" }), /*#__PURE__*/
-    React.createElement("path", { d: "M9 9L15 15" })), "ERRO")), /*#__PURE__*/
-
-
+    React.createElement("circle", { cx: "12", cy: "12", r: "10" }),
+    React.createElement("path", { d: "M15 9L9 15" }),
+    React.createElement("path", { d: "M9 9L15 15" })), "ERRO")),
 
 
-    React.createElement("div", { className: "result-item is-empty" }, /*#__PURE__*/
-    React.createElement("span", { className: "result-count" }, empty), /*#__PURE__*/
-    React.createElement("span", { className: "result-text" }, /*#__PURE__*/
+
+  // FUNÇÃO QUE MOSTRA AS PERGUNTAS SEM RESPOSTAS
+
+    React.createElement("div", { className: "result-item is-empty" },
+    React.createElement("span", { className: "result-count" }, empty),
+    React.createElement("span", { className: "result-text" },
     React.createElement("svg", {
       width: "16",
       height: "16",
@@ -294,18 +296,18 @@ function Results({ wrong, correct, empty }) {
       strokeLinejoin: "round",
       strokeWidth: "2",
       className: "css-i6dzq1",
-      viewBox: "0 0 24 24" }, /*#__PURE__*/
+      viewBox: "0 0 24 24" },
 
-    React.createElement("circle", { cx: "12", cy: "12", r: "10" }), /*#__PURE__*/
+    React.createElement("circle", { cx: "12", cy: "12", r: "10" }),
     React.createElement("path", { d: "M8 12L16 12" })), "NÃO RESPONDEU"))));
 
 }
 
 function QuestionCorrection({ wrong, correct, empty }) {
-  return /*#__PURE__*/(
+  return(
     React.createElement("div", { className: "correction" },
     questions.map(question => {
-      return /*#__PURE__*/(
+      return(
         React.createElement(Question, {
           hasButton: false,
           markSelection: question.selection,
@@ -386,20 +388,20 @@ function App() {
     }
   }, [question.value]);
 
-  return /*#__PURE__*/(
+  return(
     React.createElement("div", {
       className: "game",
       ref: gameRef,
       "data-game-started": gameStarted ? true : null,
-      "data-game-finished": question.value > totalQuestion ? true : null }, /*#__PURE__*/
+      "data-game-finished": question.value > totalQuestion ? true : null },
 
-    React.createElement("div", { className: "intro" }, /*#__PURE__*/
-    React.createElement("div", { className: "intro-inner" }, /*#__PURE__*/
+    React.createElement("div", { className: "intro" },
+    React.createElement("div", { className: "intro-inner" },
     React.createElement("h1", { className: "intro-title" }, "CSS Quiz"),
-    !gameStarted && /*#__PURE__*/
-    React.createElement(React.Fragment, null, /*#__PURE__*/
+    !gameStarted &&
+    React.createElement(React.Fragment, null,
     React.createElement("p", { className: "intro-desc" },
-    `O teste contém ${questions.length} perguntas e não há limite de tempo.`), /*#__PURE__*/
+    `O teste contém ${questions.length} perguntas e não há limite de tempo.`),
 
 
     React.createElement("button", {
@@ -408,12 +410,10 @@ function App() {
 
 
 
-
-
-    gameStarted && /*#__PURE__*/
+    gameStarted &&
     React.createElement("div", { className: "indicator" },
     questions.map((q, index) => {
-      return /*#__PURE__*/(
+      return(
         React.createElement("span", {
           className: "indicator-item",
           style: {
@@ -421,24 +421,21 @@ function App() {
 
 
 
-    })), /*#__PURE__*/
+    })),
 
 
     React.createElement(Results, {
       wrong: wrong.value,
       correct: correct.value,
-      empty: empty.value }), /*#__PURE__*/
+      empty: empty.value }),
 
     React.createElement("button", {
       className: "restart-button",
-      onClick: () => handleRestartClick() }, "Restart Quiz"))), /*#__PURE__*/
-
-
-
+      onClick: () => handleRestartClick() }, "Restart Quiz"))), 
 
 
     React.createElement("div", { className: "game-area" },
-    questions[question.value] && /*#__PURE__*/
+    questions[question.value] &&
     React.createElement(Question, {
       data: questions[question.value],
       buttonText:
@@ -448,14 +445,11 @@ function App() {
 
 
 
-    !questions[question.value] && /*#__PURE__*/
-    React.createElement(React.Fragment, null, /*#__PURE__*/
+    !questions[question.value] &&
+    React.createElement(React.Fragment, null,
     React.createElement(QuestionCorrection, { data: questions })))));
-
-
-
 
 
 }
 
-render( /*#__PURE__*/React.createElement(App, null), document.querySelector("#app"));
+render(React.createElement(App, null), document.querySelector("#app"));
