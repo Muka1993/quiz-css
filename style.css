@@ -314,7 +314,14 @@ body:after {
   font-size: 16px;
   cursor: pointer;
   font-weight: 500;
+  transition: .5s;
 }
+
+.question-button:hover {
+  transform: scale(1.1);
+  
+}
+
 .question-text {
   color: #333;
   margin: 20px 0;
